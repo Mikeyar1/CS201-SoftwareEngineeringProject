@@ -1,0 +1,22 @@
+body {
+    background-color: AliceBlue;
+}
+
+div {
+    width: 300px;
+    border: 10px black;
+    padding: 50px;
+    margin: 20px;
+}
+
+.float-container {
+    border: 3px solid #fff;
+    padding: 20px;
+}
+
+.float-child {
+    width: 10%;
+    float: left;
+    padding: 20px;
+    border: 2px solid black;
+}
