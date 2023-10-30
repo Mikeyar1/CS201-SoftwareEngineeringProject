@@ -9,11 +9,35 @@
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand">Class Track</a>
         <form class="form-inline">
-            <button id="addEvent" class="btn btn-primary" action="">Add Event</button>
+            <button id="addEvent" type ="button"class="btn btn-primary" action="" onclick="myFunction()">Add Event</button>
             <input class="form-control mr-sm-2" type="search" placeholder="search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </nav>
+    <!--pop up for inputs -->
+    <div id="myPopup" class="popup">
+        <div class="popuptext" id="popupContent">
+            <h3>Add Event</h3>
+            <button id="Close" type="button" class="btn btn-primary" action="" onclick="closePopup()">X</button>
+
+            <label for="eventName">Event Name:</label>
+            <input type="text" id="eventName" name="eventName"><br><br>
+
+            <label for="startTime">Start Time:</label>
+            <input type="time" id="startTime" name="startTime"><br><br>
+
+            <label for="endTime">End Time:</label>
+            <input type="time" id="endTime" name="endTime"><br><br>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description"></textarea><br><br>
+
+
+
+            <button onclick="closePopup()">Add</button>
+        </div>
+    </div>
+
     <!--List the dates and days -->
     <div class="float-container">
         <div class="float-child">
@@ -25,3 +49,19 @@
 
     </div>
 </body>
+<script>
+    function myFunction() {
+        var add_event = document.getElementById("myPopup");
+        if (add_event.style.display === "none" || add_event.style.display === "") {
+            add_event.style.display = "block";
+        } else {
+            add_event.style.display = "none";
+        }
+    }
+
+    function closePopup() {
+        document.getElementById("myPopup").style.display = "none";
+    }
+</script>
+
+

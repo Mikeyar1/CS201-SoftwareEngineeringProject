@@ -13,5 +13,47 @@ body {background-color: AliceBlue;}
     padding: 20px;
     border: 2px solid black;
 }
+.popup {
+    position: fixed;
+    width: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #888;
+    background-color: #f9f9f9;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Initially hidden */
+    z-index: 1000; /* Ensures the popup stays on top of other content */
+
+}
+
+#Close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background-color: white;
+    color: red;
+    border: 10px;
+    border-radius: 50%;
+    width: 20px;    
+    height: 20px;
+    line-height: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.popuptext h3 {
+    margin-top: 0;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
 
 
