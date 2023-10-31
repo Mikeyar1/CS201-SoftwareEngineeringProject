@@ -48,6 +48,10 @@ body {background-color: AliceBlue;}
     margin-top: 0;
 }
 
+.myPopup {
+    font-family:"Times New Roman", Times, serif;
+}
+
 button {
     background-color: #4CAF50;
     color: white;
