@@ -20,10 +20,11 @@
             <h3>Add Event</h3>
             <button id="Close" type="button" class="btn btn-primary" action="" onclick="closePopup()">X</button>
 
+            <form name="eventInfo" action="" method="get">
             <label for="eventName">Event Name:</label>
             <input type="text" id="eventName" name="eventName"><br><br>
 
-            <label for="startDate">Start Date:
+            <label for="startDate">Start Date:</label><br>
             <input type="checkbox" id="monday" name="startDate-s" value="1">
             <label for="monday">Monday</label><br>
             <input type="checkbox" id="tuesday" name="startDate-s" value="1">
@@ -38,7 +39,7 @@
             <label for="saturday">Saturday</label><br>
             <input type="checkbox" id="sunday" name="startDate-s" value="1">
             <label for="sunday">Sunday</label><br><br>
-            </label>
+            
             
             
             <label for="startTime">Start Time:</label>
@@ -52,7 +53,8 @@
 
 
             <!-- Onclick submit the form to the php file -->
-            <button onclick="closePopup()">Add</button>
+            <button type="submit" id="eventInfo" name="eventInfo" onclick="closePopup()">Add</button>
+            </form>
         </div>
     </div>
 
