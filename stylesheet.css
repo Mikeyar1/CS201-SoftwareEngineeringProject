@@ -9,7 +9,7 @@ body {background-color: AliceBlue;}
 .float-child {
     text-align: center;
     font-family: "Times New Roman", Times, serif;
-    width: 15%;
+    width: 14%;
     float: left;
     padding: 20px;
     border: 2px solid black;
