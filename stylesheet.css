@@ -15,6 +15,10 @@ body {background-color: AliceBlue;}
     border: 2px solid black;
 }
 
+.time {
+    height: 60px;
+}
+
 .events {
     height: 720px;
 }
