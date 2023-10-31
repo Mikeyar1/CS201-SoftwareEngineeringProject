@@ -7,7 +7,8 @@ body {background-color: AliceBlue;}
 }
 
 .float-child {
-    width: 10%;
+    text-align: center;
+    width: 14%;
     float: left;
     padding: 20px;
     border: 2px solid black;
