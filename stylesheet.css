@@ -43,7 +43,7 @@ body {background-color: AliceBlue;}
     position: absolute;
     top: 5px;
     right: 10px;
-    background-color: white;
+    background-color: AliceBlue;
     color: DarkBlue;
     border: 10px;
     border-radius: 50%;
@@ -65,6 +65,7 @@ body {background-color: AliceBlue;}
 
 button {
     background-color: DarkBlue;
+    border-radius: 2px;
     color: white;
     padding: 10px 15px;
     border: none;
