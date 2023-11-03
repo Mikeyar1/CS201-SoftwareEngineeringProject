@@ -23,6 +23,13 @@ body {background-color: AliceBlue;}
     height: 720px;
 }
 
+.rounded-corners {
+  width: 200px;
+  height: 100px;
+  background-color: AliceBlue;
+  border-radius: 20px;
+}
+
 .popup {
     position: fixed;
     width: 300px;
