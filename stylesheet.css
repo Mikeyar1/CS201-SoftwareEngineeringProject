@@ -1,0 +1,98 @@
+body {background-color: AliceBlue;}
+
+
+.float-container{    
+    padding: 20px;
+    margin: 20px;
+}
+
+.float-child {
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+    width: 12.5%;
+    float: left;
+    padding: 20px;
+    border: 2px solid black;
+}
+
+.time {
+    height: 54px;
+}
+
+.events {
+    height: 720px;
+}
+
+.rounded-corners {
+  width: 200px;
+  height: 100px;
+  background-color: AliceBlue;
+  border-radius: 20px;
+}
+
+.popup {
+    position: fixed;
+    width: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 25px;
+    border: 1px solid #888;
+    background-color: AliceBlue;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Initially hidden */
+    z-index: 1000; /* Ensures the popup stays on top of other content */
+
+}
+
+#Close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background-color: AliceBlue;
+    color: DarkBlue;
+    border: 10px;
+    border-radius: 50%;
+    width: 20px;    
+    height: 20px;
+    line-height: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.popuptext h3 {
+    margin-top: 0;
+    font-family:"Times New Roman", Times, serif;
+}
+
+.popuptext {
+    font-family:"Times New Roman", Times, serif;
+}
+
+button {
+    background-color: DarkBlue;
+    border-radius: 2px;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+.weekday {
+    display: flex;
+    align-items: center; /* Aligns the checkbox and label in the center vertically */
+    margin-right: 10px; /* Adjust spacing as needed */
+}
+
+.weekday label,
+.weekday input[type="checkbox"],
+.weekday input[type="time"] {
+    margin-right: 5px; /* Adjust the right margin as needed */
+}
+
+.time-input {
+    display: none;
+}
+
+
+
