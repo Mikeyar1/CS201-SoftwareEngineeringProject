@@ -78,6 +78,21 @@ button {
     border: none;
     cursor: pointer;
 }
+.weekday {
+    display: flex;
+    align-items: center; /* Aligns the checkbox and label in the center vertically */
+    margin-right: 10px; /* Adjust spacing as needed */
+}
+
+.weekday label,
+.weekday input[type="checkbox"],
+.weekday input[type="time"] {
+    margin-right: 5px; /* Adjust the right margin as needed */
+}
+
+.time-input {
+    display: none;
+}
 
 
 
