@@ -19,36 +19,60 @@
         <div class="popuptext" id="popupContent">
             <h3>Add Event</h3>
             <button id="Close" type="button" class="btn btn-primary" action="" onclick="closePopup()">X</button>
-
             <form name="eventInfo" action="" method="get">
             <label for="eventName">Event Name:</label>
-            <input type="text" id="eventName" name="eventName"><br><br>
-
+            <input type="text" id="eventName" name="eventName" required><br><br>
             <label for="startDate">Start Date:</label><br>
-            <input type="checkbox" id="monday" name="startDate-s" value="1">
-            <label for="monday">Monday</label><br>
-            <label for="startTime">Start Time:</label>
-            <input type="time" id="startTime" name="startTime"><br><br>
-            <input type="checkbox" id="tuesday" name="startDate-s" value="1">
-            <label for="tuesday">Tuesday</label><br>
-            <input type="checkbox" id="wednesday" name="startDate-s" value="1">
-            <label for="wednesday">Wednesday</label><br>
-            <input type="checkbox" id="thursday" name="startDate-s" value="1">
-            <label for="thursday">Thursday</label><br>
-            <input type="checkbox" id="friday" name="startDate-s" value="1">
-            <label for="friday">Friday</label><br>
-            <input type="checkbox" id="saturday" name="startDate-s" value="1">
-            <label for="saturday">Saturday</label><br>
-            <input type="checkbox" id="sunday" name="startDate-s" value="1">
-            <label for="sunday">Sunday</label><br><br>
+            <!--A wrapped up of the time and date.-->
+            <div class="weekday">
+                <input type="checkbox" id="monday" name="startDate-s" onclick="toggleTimeInput('monday', 'MstartTime', 'MendTime')" value="1">
+                <label for="monday">Monday</label>
+                <input type="time" id="MstartTime" name="MstartTime" class="time-input">
+                <input type="time" id="MendTime" name="MendTime" class="time-input">
+            </div>
             
+            <div class="weekday">
+                <input type="checkbox" id="tuesday" name="startDate-s" onclick="toggleTimeInput('tuesday', 'TstartTime', 'TendTime')" value="1">
+                <label for="tuesday">Tuesday</label>
+                <input type="time" id="TstartTime" name="TstartTime" class="time-input">
+                <input type="time" id="TendTime" name="TendTime" class="time-input">
+            </div>
             
+            <div class="weekday">
+                <input type="checkbox" id="wednesday" name="startDate-s" onclick="toggleTimeInput('wednesday', 'WstartTime', 'WendTime')" value="1">
+                <label for="wednesday">Wednesday</label>
+                <input type="time" id="WstartTime" name="WstartTime" class="time-input">
+                <input type="time" id="WendTime" name="WendTime" class="time-input">
+            </div>
             
-            <label for="startTime">Start Time:</label>
-            <input type="time" id="startTime" name="startTime"><br><br>
-
-            <label for="endTime">End Time:</label>
-            <input type="time" id="endTime" name="endTime"><br><br>
+            <div class="weekday">
+                <input type="checkbox" id="thursday" name="startDate-s" onclick="toggleTimeInput('thursday', 'ThstartTime', 'ThendTime')" value="1">
+                <label for="thursday">Thursday</label>
+                <input type="time" id="ThstartTime" name="ThstartTime" class="time-input">
+                <input type="time" id="ThendTime" name="ThendTime" class="time-input">
+            </div>
+            
+            <div class="weekday">
+                <input type="checkbox" id="friday" name="startDate-s" onclick="toggleTimeInput('friday', 'FstartTime', 'FendTime')" value="1">
+                <label for="friday">Friday</label>
+                <input type="time" id="FstartTime" name="FstartTime" class="time-input">
+                <input type="time" id="FendTime" name="FendTime" class="time-input">
+            </div>
+            
+            <div class="weekday">
+                <input type="checkbox" id="saturday" name="startDate-s" onclick="toggleTimeInput('saturday', 'SstartTime', 'SendTime')" value="1">
+                <label for="saturday">Saturday</label>
+                <input type="time" id="SstartTime" name="SstartTime" class="time-input">
+                <input type="time" id="SendTime" name="SendTime" class="time-input">
+            </div>
+            
+            <div class="weekday">
+                <input type="checkbox" id="sunday" name="startDate-s" onclick="toggleTimeInput('sunday', 'SustartTime', 'SuendTime')" value="1">
+                <label for="sunday">Sunday</label>
+                <input type="time" id="SustartTime" name="SustartTime" class="time-input">
+                <input type="time" id="SuendTime" name="SuendTime" class="time-input">
+            </div>            
+            
 
             <label for="description">Description:</label>
             <textarea id="description" name="description"></textarea><br><br>
@@ -140,6 +164,23 @@
     function closePopup() {
         document.getElementById("myPopup").style.display = "none";
     }
+    function toggleTimeInput(checkboxId, startTimeId, endTimeId) {
+    var checkbox = document.getElementById(checkboxId);
+    var startTime = document.getElementById(startTimeId);
+    var endTime = document.getElementById(endTimeId);
+
+    // If the checkbox is checked, display the time inputs
+    if (checkbox.checked) {
+        startTime.style.display = 'block';
+        endTime.style.display = 'block';
+    } else {
+        // If the checkbox is not checked, hide the time inputs
+        startTime.style.display = 'none';
+        endTime.style.display = 'none';
+        }
+        
+    }
+    
 </script>
 
 
