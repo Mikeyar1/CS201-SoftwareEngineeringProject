@@ -68,6 +68,12 @@ body {background-color: AliceBlue;}
 
 .popuptext {
     font-family:"Times New Roman", Times, serif;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 button {
