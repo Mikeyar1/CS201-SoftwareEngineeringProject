@@ -19,7 +19,7 @@
     //TODO : days must be an array value
     $days = $_POST['startDate-s'];
 
-    $name = $_POST[];
+    $name = $_POST[''];
     $desc = $_POST[];
     //TODO : for all days, create an event with the construct function
     //Name, description are the same for all, unique day and/or times for all
