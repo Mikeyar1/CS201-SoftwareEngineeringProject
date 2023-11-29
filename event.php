@@ -3,7 +3,7 @@
         $myfile = fopen("db.txt","a") or die("Database error");
         $start = "{'";
         $hold = "';'";
-        $end = "]";
+        $end = "}";
         frwite($myfile, $start);
         fwrite($mfyile, $name);
         fwrite($myfile, $hold);
