@@ -1,1 +1,1 @@
-{"user1";"name1";"monday";"12:00";"13:00";"desc"}
+{"name1";"monday";"12:00";"13:00";"desc"}
