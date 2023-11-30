@@ -10,7 +10,7 @@ var con = mysql.createConnection({
 con.connect(function(err, id) {
   if(err) throw err;
 
-  sql.input('id1', mysql.VarChar, id);
+  mysql.input('id1', mysql.VarChar, id);
 
   con.query( "DELETE FROM ___ WHERE id = @id1", function (err, result, feilds) {
     if (err) throw err;
