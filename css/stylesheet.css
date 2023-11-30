@@ -16,7 +16,11 @@ body {background-color: white;}
 }
 
 .title {
-    color: darkred;
+    color: Black;
+}
+
+.nav {
+    background-color: DarkRed;
 }
 
 
