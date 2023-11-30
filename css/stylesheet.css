@@ -23,6 +23,7 @@ body {
 nav {
     background-color: firebrick;
     font-family: "Roboto Mono", monospace;
+    border-bottom: 2px solid black;
 }
 
 .time {
