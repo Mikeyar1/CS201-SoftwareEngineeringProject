@@ -11,7 +11,7 @@ var con = mysql.createConnection({
 
 con.connect(function(err) {
   if (err) throw err;
-  con.query("INSERT INTO Calendar(name, desc, weekday, startTime, endTime) VALUES """, function (err, result, fields) {
+  con.query("INSERT INTO Calendar(name, desc, weekday, startTime, endTime) VALUES ('name', 'description', 'weekday', 'startTime', 'endTime')", function (err, result, fields) {
     if (err) throw err;
     console.log(result);
   });
