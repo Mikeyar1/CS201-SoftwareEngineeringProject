@@ -1,5 +1,6 @@
-body {background-color: white;}
-
+body {
+    background-color: white;
+}
 
 .float-container{    
     padding: 20px;
@@ -16,13 +17,12 @@ body {background-color: white;}
 }
 
 .title {
-    color: Black;
+    color: black;
 }
 
 nav {
-    background-color: crimson;
+    background-color: red;
 }
-
 
 .time {
     height: 54px;
