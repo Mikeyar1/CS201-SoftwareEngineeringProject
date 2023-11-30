@@ -1,5 +1,8 @@
 // load everything from database
+const initSqlJs = require('sql.js');
 var mysql = require('mysql');
+
+const db = new SQL.Database("Calendar");
 
 var con = mysql.createConnection({
   host: "",
@@ -10,8 +13,9 @@ var con = mysql.createConnection({
 
 con.connect(function(err) {
   if (err) throw err;
-  con.query("", function (err, result, fields) {
-    if (err) throw err;
-    console.log(result);
+  let sqlstr = "SELECT * FROM Calendar";
+  const stmt = db.prepare("SELECT * FROM hello WHERE id=:ID AND Name=:name");
+ const result = stmt.getAsObject({':aval' : 1, ':bval' : 'world'});
+console.log(result); // Will print {a:1, b:'world'}
   });
 });
