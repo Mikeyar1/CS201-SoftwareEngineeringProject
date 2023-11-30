@@ -1,5 +1,5 @@
 body {
-    background-color: white;
+    background-color: floralwhite;
 }
 
 .float-container{    
@@ -18,6 +18,10 @@ body {
 
 .title {
     color: black;
+}
+
+#addEvent {
+    background-color: black;
 }
 
 nav {
