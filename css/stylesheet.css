@@ -31,6 +31,8 @@ body {
 
 #searchButton {
     background-color: floralwhite;
+    color: black;
+    border: 1px solid black;
 }
 
 nav {
