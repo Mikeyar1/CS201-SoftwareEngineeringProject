@@ -87,11 +87,11 @@ nav {
 
 .popuptext h3 {
     margin-top: 0;
-    font-family:"Times New Roman", Times, serif;
+    font-family: "Roboto Mono", monospace;
 }
 
 .popuptext {
-    font-family:"Times New Roman", Times, serif;
+    font-family: "Roboto Mono", monospace;
     animation: fadeIn 0.5s ease-in-out;
 }
 
