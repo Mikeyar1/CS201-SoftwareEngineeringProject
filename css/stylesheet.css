@@ -24,6 +24,10 @@ body {
     background-color: black;
 }
 
+#searchButton {
+    background-color: forestgreen;
+}
+
 nav {
     background-color: firebrick;
     font-family: "Roboto Mono", monospace;
