@@ -21,8 +21,8 @@ body {
 }
 
 nav {
-    background-color: red;
-    font-family: "Roboto Mono";
+    background-color: firebrick;
+    font-family: "Roboto Mono", monospace;
 }
 
 .time {
