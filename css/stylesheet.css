@@ -20,6 +20,10 @@ body {
     color: black;
 }
 
+.form-control {
+    font-family: "Times New Roman", Times, serif;
+}
+
 #addEvent {
     background-color: black;
 }
