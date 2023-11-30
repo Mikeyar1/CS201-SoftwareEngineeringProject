@@ -42,6 +42,7 @@ body {
 nav {
     background-color: firebrick;
     font-family: "Roboto Mono", monospace;
+    font-weight: bold;
     border-bottom: 4px solid black;
 }
 
