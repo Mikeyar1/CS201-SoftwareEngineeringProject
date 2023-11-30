@@ -16,6 +16,10 @@ body {
     border: 2px solid black;
 }
 
+#eventInfo {
+    background-color: black;
+    color: white;
+
 .title {
     color: black;
 }
