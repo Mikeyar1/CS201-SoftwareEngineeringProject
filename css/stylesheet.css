@@ -100,5 +100,9 @@ button {
     display: none;
 }
 
+.navbar-brand {
+    color: DarkRed;
+}
+
 
 
