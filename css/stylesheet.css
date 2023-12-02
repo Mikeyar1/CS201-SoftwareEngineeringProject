@@ -132,7 +132,12 @@ button {
     display: none;
 }
 
-
+.calendar-event {
+    color: firebrick;
+    border-radius: 5px;
+    border: 1px black;
+    
+}
 
 
 
