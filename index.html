@@ -25,57 +25,52 @@
             <form name="eventInfo" onSubmit="return validateForm()">
             <label for="eventName">Event Name:</label>
             <input type="text" id="eventName" name="eventName" required><br><br>
-            <label for="startDate">Start Date:</label><br>
+            <label for="startDate-s">Start Date:</label><br>
             <!--A wrapped up of the time and date.-->
             <div class="weekday">
-                <input type="checkbox" id="monday" name="startDate-s" onclick="toggleTimeInput('monday', 'MstartTime', 'MendTime')" value="1">
+                <input type="raido" id="monday" name="startDate-s" value="monday">
                 <label for="monday">Monday</label>
-                <input type="time" id="MstartTime" name="MstartTime" class="time-input">
-                <input type="time" id="MendTime" name="MendTime" class="time-input">
             </div>
             
             <div class="weekday">
-                <input type="checkbox" id="tuesday" name="startDate-s" onclick="toggleTimeInput('tuesday', 'TstartTime', 'TendTime')" value="1">
+                <input type="radio" id="tuesday" name="startDate-s" value="tuesday">
                 <label for="tuesday">Tuesday</label>
-                <input type="time" id="TstartTime" name="TstartTime" class="time-input">
-                <input type="time" id="TendTime" name="TendTime" class="time-input">
             </div>
             
             <div class="weekday">
-                <input type="checkbox" id="wednesday" name="startDate-s" onclick="toggleTimeInput('wednesday', 'WstartTime', 'WendTime')" value="1">
+                <input type="checkbox" id="wednesday" name="startDate-s" value="wednesday">
                 <label for="wednesday">Wednesday</label>
-                <input type="time" id="WstartTime" name="WstartTime" class="time-input">
-                <input type="time" id="WendTime" name="WendTime" class="time-input">
             </div>
             
             <div class="weekday">
-                <input type="checkbox" id="thursday" name="startDate-s" onclick="toggleTimeInput('thursday', 'ThstartTime', 'ThendTime')" value="1">
+                <input type="checkbox" id="thursday" name="startDate-s" value="thursday">
                 <label for="thursday">Thursday</label>
-                <input type="time" id="ThstartTime" name="ThstartTime" class="time-input">
-                <input type="time" id="ThendTime" name="ThendTime" class="time-input">
             </div>
             
             <div class="weekday">
-                <input type="checkbox" id="friday" name="startDate-s" onclick="toggleTimeInput('friday', 'FstartTime', 'FendTime')" value="1">
+                <input type="radio" id="friday" name="startDate-s" value="1">
                 <label for="friday">Friday</label>
-                <input type="time" id="FstartTime" name="FstartTime" class="time-input">
-                <input type="time" id="FendTime" name="FendTime" class="time-input">
             </div>
             
             <div class="weekday">
-                <input type="checkbox" id="saturday" name="startDate-s" onclick="toggleTimeInput('saturday', 'SstartTime', 'SendTime')" value="1">
+                <input type="radio" id="saturday" name="startDate-s" value="saturday">
                 <label for="saturday">Saturday</label>
-                <input type="time" id="SstartTime" name="SstartTime" class="time-input">
-                <input type="time" id="SendTime" name="SendTime" class="time-input">
             </div>
             
             <div class="weekday">
-                <input type="checkbox" id="sunday" name="startDate-s" onclick="toggleTimeInput('sunday', 'SustartTime', 'SuendTime')" value="1">
+                <input type="radio" id="sunday" name="startDate-s" value="sunday">
                 <label for="sunday">Sunday</label>
-                <input type="time" id="SustartTime" name="SustartTime" class="time-input">
-                <input type="time" id="SuendTime" name="SuendTime" class="time-input">
             </div>            
-            
+
+            <div>
+                <label for="sTime"></label>
+                <input type="time" id="sTime" min="08:00" max="18:00" required/>
+            </div>
+
+            <div>
+                <label for="eTime"></label>
+                <input type="time" id="eTime" min="08:00" max="18:00" required/>
+            </div>
 
             <label for="description">Description:</label>
             <textarea id="description" name="description"></textarea><br><br>
