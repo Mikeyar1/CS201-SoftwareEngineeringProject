@@ -1,7 +1,7 @@
-function deleteEvent(name) {
+const sql = require('sql.js');
 
-con.query( "DROP FROM Calendar WHERE id = @id1", function (err, result, feilds) {
-    if (err) throw err;
-    console.log(result);
-  });
-});
+//Parameters are the id and the database
+function deleteEvent(id1, db) {
+    
+    db.run("DROP FROM Calendar WHERE id = @id1;");
+}
