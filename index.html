@@ -22,7 +22,7 @@
         <div class="popuptext" id="popupContent">
             <h3>Add Event</h3>
             <button id="Close" type="button" class="btn btn-primary" action="" onclick="closePopup()">X</button>
-            <form name="eventInfo" action="?" onSubmit="">
+            <form name="eventInfo" action="?" onSubmit="return validateForm()">
             <label for="eventName">Event Name:</label>
             <input type="text" id="eventName" name="eventName" required><br><br>
             <label for="startDate">Start Date:</label><br>
@@ -82,7 +82,7 @@
 
 
             <!-- Onclick submit the form to the php file -->
-            <button type="submit" id="eventInfo" name="eventInfo" onclick="closePopup()">Add</button>
+            <button type="submit" id="eventInfo" name="eventInfo" onclick="">Add</button>
             </form>
         </div>
     </div>
@@ -183,6 +183,63 @@
         }
         
     }
+
+    function validateForm() {
+    // Check if the event name is provided
+    var eventName = document.getElementById("eventName").value;
+    if (!eventName.trim()) {
+        alert("Please enter an event name.");
+        return false;
+    }
+
+    // Check for at least one selected weekday and corresponding time inputs
+    var weekdays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+    var atLeastOneDayChecked = false;
+    
+    for (var i = 0; i < weekdays.length; i++) {
+        var checkbox = document.getElementById(weekdays[i]);
+        var startTime = document.getElementById(weekdays[i].charAt(0).toUpperCase() + 'startTime');
+        var endTime = document.getElementById(weekdays[i].charAt(0).toUpperCase() + 'endTime');
+
+        if (checkbox.checked) {
+            atLeastOneDayChecked = true;
+
+            // Check if corresponding time inputs are provided
+            if (!startTime.value || !endTime.value) {
+                alert("Please enter start and end time for " + weekdays[i]);
+                return false;
+            }
+            var start = startTime.value;
+            var end = endTime.value;
+            if (start >= end) {
+                alert("The start time must be earlier than the end time for " + weekdays[i]);
+                return false;
+            }
+            if (!isTimeInRange(start) || !isTimeInRange(end)) {
+                alert("Start and end times must be between 8:00 AM and 8:00 PM for " + weekdays[i]);
+                return false;
+            }
+        }
+    }
+
+    if (!atLeastOneDayChecked) {
+        alert("Please select at least one weekday.");
+        return false;
+    }
+        
+    return true; // Form is valid
+}
+function isTimeInRange(timeStr) {
+    var time = parseInt(timeStr.replace(':', ''), 10);
+    return time >= 800 && time <= 2000; 
+}
+
+document.getElementById("eventInfo").addEventListener("submit", function(event){
+    if(!validateForm()){
+        event.preventDefault();
+    } 
+});
+
     
 </script>
 
