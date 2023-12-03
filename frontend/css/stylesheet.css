@@ -16,6 +16,18 @@ body {
     border: 2px solid black;
 }
 
+.classNav h1 {
+     text-align: center;
+    font-family: "Roboto Mono", monospace;
+    font-weight: bold;
+}
+
+.classNav h2 {
+    text-align: center;
+    font-family: "Roboto Mono", monospace;
+    font-weight: bold;
+}
+
 #eventInfo {
     background-color: black;
     color: white;
@@ -58,18 +70,6 @@ nav {
     font-family: "Roboto Mono", monospace;
     font-weight: bold;
     border-bottom: 4px solid black;
-}
-
-nav h1 {
-    text-align: center;
-    font-family: "Roboto Mono", monospace;
-    font-weight: bold;
-}
-
-nav h2 {
-    text-align: center;
-    font-family: "Roboto Mono", monospace;
-    font-weight: bold;
 }
 
 .time {
