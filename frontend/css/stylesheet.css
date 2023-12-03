@@ -47,8 +47,21 @@ nav {
     border-bottom: 4px solid black;
 }
 
+nav h1 {
+    text-align: center;
+    font-family: "Roboto Mono", monospace;
+    font-weight: bold;
+}
+
+nav h2 {
+    text-align: center;
+    font-family: "Roboto Mono", monospace;
+    font-weight: bold;
+}
+
 .time {
     height: 54px;
+    overflow: hidden;
 }
 
 .events {
