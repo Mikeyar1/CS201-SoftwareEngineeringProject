@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src="js/addEvent.js"></script>
+    <script type="text/javascript" src="js/deleteEvent.js"></script>
+    <script type="text/javascript" src="js/calendarWeek.js"></script>
+    <title>Class Track</title>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="navbar-brand">Class Track</a>
+        <form class="form-inline">
+            <button id="addEvent" type ="button"class="btn btn-primary" action="" onclick="myFunction()">Add Event</button>
+            <input class="form-control mr-sm-2" type="search" placeholder="search" aria-label="Search">
+            <button id ="searchButton" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
+    <!--pop up for inputs -->
+    <div id="myPopup" class="popup">
+        <div class="popuptext" id="popupContent">
+            <h3>Add Event</h3>
+            <button id="Close" type="button" class="btn btn-primary" action="" onclick="closePopup()">X</button>
+            <form name="eventInfo" onSubmit="return validateForm()">
+            <label for="eventName">Event Name:</label>
+            <input type="text" id="eventName" name="eventName" required><br><br>
+            <label>Start Date:</label><br>
+            <!--A wrapped up of the time and date.-->
+            <div class="weekday">
+                <input type="radio" id="monday" name="startDate-s" value="1">
+                <label for="monday">Monday</label>
+            </div>
+            
+            <div class="weekday">
+                <input type="radio" id="tuesday" name="startDate-s" value="2">
+                <label for="tuesday">Tuesday</label>
+            </div>
+            
+            <div class="weekday">
+                <input type="radio" id="wednesday" name="startDate-s" value="3">
+                <label for="wednesday">Wednesday</label>
+            </div>
+            
+            <div class="weekday">
+                <input type="radio" id="thursday" name="startDate-s" value="4">
+                <label for="thursday">Thursday</label>
+            </div>
+            
+            <div class="weekday">
+                <input type="radio" id="friday" name="startDate-s" value="5">
+                <label for="friday">Friday</label>
+            </div>
+            
+            <div class="weekday">
+                <input type="radio" id="saturday" name="startDate-s" value="6">
+                <label for="saturday">Saturday</label>
+            </div>
+            
+            <div class="weekday">
+                <input type="radio" id="sunday" name="startDate-s" value="7">
+                <label for="sunday">Sunday</label>
+            </div>            
+
+            <div>
+                <label for="sTime">Start Time: </label>
+                <input type="time" id="sTime" min="08:00" max="18:00" required/>
+            </div>
+
+            <div>
+                <label for="eTime">End Time: </label>
+                <input type="time" id="eTime" min="08:00" max="18:00" required/>
+            </div>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description"></textarea><br><br>
+
+
+            <!-- Onclick submit the form to the php file -->
+            <button type="submit" class="btn btn-primary" id="eventInfo" name="eventInfo" onclick="addEvent(this.form)">Add</button>
+            </form>
+        </div>
+    </div>
+
+    <!--List the dates and days -->
+    <div class="float-container">
+        <div class="float-child">
+            <div class="green">Time</div>
+        </div>
+        <div class="float-child">
+            <div class="green">Monday</div>
+        </div>
+        <div class="float-child">
+            <div class="green">Tuesday</div>
+        </div>
+        <div class="float-child">
+            <div class="green">Wednesday</div>
+        </div>
+        <div class="float-child">
+            <div class="green">Thursday</div>
+        </div>
+        <div class="float-child">
+            <div class="green">Friday</div>
+        </div>
+        <div class="float-child">
+            <div class="green">Saturday</div>
+        </div>
+        <div class="float-child">
+            <div class="green">Sunday</div>
+        </div>
+    </div>
+    <!-- Seven boxes for the events-->
+    <div class="float-container">
+        <div class="float-child events">
+            <div class="time">------- 8:00 -------</div>
+            <div class="time">------- 9:00 -------</div>
+            <div class="time">------ 10:00 -------</div>
+            <div class="time">------ 11:00 -------</div>
+            <div class="time">------ 12:00 -------</div>
+            <div class="time">------ 13:00 -------</div>
+            <div class="time">------ 14:00 -------</div>
+            <div class="time">------ 15:00 -------</div>
+            <div class="time">------ 16:00 -------</div>
+            <div class="time">------ 17:00 -------</div>
+            <div class="time">------ 18:00 -------</div>
+            <div class="time">------ 19:00 -------</div>
+            <div class="time">------ 20:00 -------</div>
+        </div>
+        <div class="float-child events">
+            <div class="day mon"></div>
+        </div>
+        <div class="float-child events">
+            <div class="day tue"></div>
+        </div>
+        <div class="float-child events">
+            <div class="day wen"></div>
+        </div>
+        <div class="float-child events">
+            <div class="day thur"></div>
+        </div>
+        <div class="float-child events">
+            <div class="day fri"></div>
+        </div>
+        <div class="float-child events">
+            <div class="day sat"></div>
+        </div>
+        <div class="float-child events">
+            <div class="day sun"></div>
+        </div>
+    </div>
+</body>
+<script>
+    function myFunction() {
+        var add_event = document.getElementById("myPopup");
+        if (add_event.style.display === "none" || add_event.style.display === "") {
+            add_event.style.display = "block";
+        } else {
+            add_event.style.display = "none";
+        }
+    }
+
+    function closePopup() {
+        document.getElementById("myPopup").style.display = "none";
+    }
+    function toggleTimeInput(checkboxId, startTimeId, endTimeId) {
+    var checkbox = document.getElementById(checkboxId);
+    var startTime = document.getElementById(startTimeId);
+    var endTime = document.getElementById(endTimeId);
+
+    // If the checkbox is checked, display the time inputs
+    if (checkbox.checked) {
+        startTime.style.display = 'block';
+        endTime.style.display = 'block';
+    } else {
+        // If the checkbox is not checked, hide the time inputs
+        startTime.style.display = 'none';
+        endTime.style.display = 'none';
+        }
+        
+    }
+
+    function validateForm() {
+    // Check if the event name is provided
+    var eventName = document.getElementById("eventName").value;
+    if (!eventName.trim()) {
+        alert("Please enter an event name.");
+        return false;
+    }
+
+    // Check for at least one selected weekday and corresponding time inputs
+    var weekdays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+    var atLeastOneDayChecked = false;
+    
+    for (var i = 0; i < weekdays.length; i++) {
+        var checkbox = document.getElementById(weekdays[i]);
+        var startTime = document.getElementById(weekdays[i].charAt(0).toUpperCase() + 'startTime');
+        var endTime = document.getElementById(weekdays[i].charAt(0).toUpperCase() + 'endTime');
+
+        if (checkbox.checked) {
+            atLeastOneDayChecked = true;
+
+            // Check if corresponding time inputs are provided
+            if (!startTime.value || !endTime.value) {
+                alert("Please enter start and end time for " + weekdays[i]);
+                return false;
+            }
+            var start = startTime.value;
+            var end = endTime.value;
+            if (start >= end) {
+                alert("The start time must be earlier than the end time for " + weekdays[i]);
+                return false;
+            }
+            if (!isTimeInRange(start) || !isTimeInRange(end)) {
+                alert("Start and end times must be between 8:00 AM and 8:00 PM for " + weekdays[i]);
+                return false;
+            }
+        }
+    }
+
+    if (!atLeastOneDayChecked) {
+        alert("Please select at least one weekday.");
+        return false;
+    }
+        
+    return true; // Form is valid
+}
+function isTimeInRange(timeStr) {
+    var time = parseInt(timeStr.replace(':', ''), 10);
+    return time >= 800 && time <= 2000; 
+}
+
+document.getElementById("eventInfo").addEventListener("submit", function(event){
+    if(!validateForm()){
+        event.preventDefault();
+    } 
+});
+
+    
+</script>
+
+
