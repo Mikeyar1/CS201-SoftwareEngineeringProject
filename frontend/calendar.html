@@ -263,6 +263,7 @@
       endTime.style.display = "none";
     }
   }
+  
   //Create a div based on the parameters, get info from form.
   function add(name, day, sTime, eTime, desc, id) {
     //ID of the div to be appeneded to
@@ -279,6 +280,7 @@
     d.innerHTML;
     //Append
     i.appendChild(d);
+    //put info to the database
   }
 
   function validateForm() {
@@ -341,7 +343,8 @@
       alert("Please select at least one weekday.");
       return false;
     }
-
+    //RUN THE ADD FUNCTION AFTER VALIDATION
+    add();
     return true; // Form is valid
   }
   function isTimeInRange(timeStr) {
