@@ -7,12 +7,27 @@
   </head>
 
   <body>
-    <select id="calendarList"></select>
+    <h1>Welcome to Class Track</h1>
+    <h2>Please choose which calendar you'd like to choose</h2>
 
-    <button onclick="startCalendar()">Run Existing Calendar</button>
+    <div class="existingForm">
+      <label for="calendarList">Select an existing Calendar:</label>
+      <select id="calendarList"></select>
+
+      <button onclick="startCalendar(event)">Run Existing Calendar</button>
+    </div>
 
     <div class="makeForm">
-      <button onclick="startCalendar()">Make New Calendar</button>
+      <label for="newName">New Calendar Name:</label>
+      <input type="text" id="newName" name="calendarName" />
+
+      <label for="newDesc">Calendar Description:</label>
+      <input type="text" id="newDesc" name="calendarDescription" />
+
+      <label for="calendarUser">User :</label>
+      <input type="text" id="calendarUser" name="calendarUser" />
+
+      <button onclick="startCalendar(event)">Make New Calendar</button>
     </div>
     <!-- <button onclick="startCalendar()">Create New Calendar</button>
     <button onclick="startCalendar()">Select Existing Calendar</button> -->
@@ -31,13 +46,22 @@
     }
     getCalendars();
 
-    async function startCalendar() {
+    async function startCalendar(event) {
       // Condition that either creates a new calendar or Loads an existing one based on the button clicked
-      if (this.innerHTML == "Make New Calendar") {
-        await makeCalendar("test2", "A second test calendar", "userB");
+      if (event.target.innerText == "Make New Calendar") {
+        if (
+          newName.value == "" ||
+          newDesc.value == "" ||
+          calendarUser.value == ""
+        ) {
+          alert("Please fill out all fields");
+          return;
+        }
+        await makeCalendar(newName.value, newDesc.value, calendarUser.value);
+        // pass the calendar object to the next page
+        sessionStorage.setItem("calendarName", newName.value);
       } else {
         // pass the calendar object to the next page
-        console.log(calendarList.text);
         sessionStorage.setItem("calendarName", calendarList.value);
       }
       window.location.href = "calendar.html";

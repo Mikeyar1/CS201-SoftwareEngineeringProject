@@ -16,7 +16,6 @@
     <script>
       window.calendarName = sessionStorage.getItem("calendarName");
       (async () => {
-        console.log(window.calendarName);
         const calendarObj = await getCalendar(window.calendarName);
         console.log(calendarObj);
       })();
