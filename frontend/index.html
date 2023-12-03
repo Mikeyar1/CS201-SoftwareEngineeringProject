@@ -15,9 +15,10 @@
   </head>
 
   <body>
+    <nav class="navbar">
     <h1>Welcome to Class Track</h1>
     <h2>Please choose which calendar you'd like to choose</h2>
-
+    </nav>
     <div class="existingForm">
       <label for="calendarList">Select an existing Calendar:</label>
       <select id="calendarList"></select>
@@ -25,7 +26,7 @@
       <button class="btn btn-primary" onclick="startCalendar(event)">Run Existing Calendar</button>
     </div>
 
-    <div class="makeForm">
+    <div class="float-container makeForm">
       <label for="newName">New Calendar Name:</label>
       <input type="text" id="newName" name="calendarName" />
 
