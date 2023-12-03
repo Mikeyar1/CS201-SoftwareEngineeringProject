@@ -1,0 +1,8 @@
+{
+	"editor.detectIndentation": false,
+	"editor.guides.bracketPairs": "active",
+	"editor.insertSpaces": false,
+	"editor.formatOnSave": true,
+	"javascript.preferences.quoteStyle": "double",
+	"editor.defaultFormatter": "esbenp.prettier-vscode"
+}

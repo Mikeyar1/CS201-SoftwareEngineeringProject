@@ -1,0 +1,46 @@
+<!-- FILEPATH: Intro to Software/CSE-201-Final-Project-Group-0x64/index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calendar Page</title>
+    <script src="js/calendar.js"></script>
+  </head>
+
+  <body>
+    <select id="calendarList"></select>
+
+    <button onclick="startCalendar()">Run Existing Calendar</button>
+
+    <div class="makeForm">
+      <button onclick="startCalendar()">Make New Calendar</button>
+    </div>
+    <!-- <button onclick="startCalendar()">Create New Calendar</button>
+    <button onclick="startCalendar()">Select Existing Calendar</button> -->
+  </body>
+  <script>
+    async function getCalendars() {
+      const cals = await getAllCalendars();
+      for (let i = 0; i < cals.length; i++) {
+        // append a new option in the dropdown showing a list of calendar names
+        var option = document.createElement("option");
+        option.text = cals[i].calendarName;
+        option.value = cals[i].calendarName;
+        option.id = `calendar${i}`;
+        document.getElementById("calendarList").appendChild(option);
+      }
+    }
+    getCalendars();
+
+    async function startCalendar() {
+      // Condition that either creates a new calendar or Loads an existing one based on the button clicked
+      if (this.innerHTML == "Make New Calendar") {
+        await makeCalendar("test2", "A second test calendar", "userB");
+      } else {
+        // pass the calendar object to the next page
+        console.log(calendarList.text);
+        sessionStorage.setItem("calendarName", calendarList.value);
+      }
+      window.location.href = "calendar.html";
+    }
+  </script>
+</html>
