@@ -10,7 +10,7 @@ body {
 .float-child {
     text-align: center;
     font-family: "Times New Roman", Times, serif;
-    width: 12.5vw;
+    width: 12.5px;
     float: left;
     padding: 20px;
     border: 2px solid black;
@@ -42,7 +42,7 @@ body {
 }
 
 .mkfc {
-    width:25vw;
+    width:25px;
     height: 100px;
 }
 
