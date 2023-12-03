@@ -212,25 +212,25 @@
       <div class="time">------ 20:00 -------</div>
     </div>
     <div class="float-child events">
-      <div class="day mon"></div>
+      <div class="day monday"></div>
     </div>
     <div class="float-child events">
-      <div class="day tue"></div>
+      <div class="day tuesday"></div>
     </div>
     <div class="float-child events">
-      <div class="day wen"></div>
+      <div class="day wednesday"></div>
     </div>
     <div class="float-child events">
-      <div class="day thur"></div>
+      <div class="day thursday"></div>
     </div>
     <div class="float-child events">
-      <div class="day fri"></div>
+      <div class="day friday"></div>
     </div>
     <div class="float-child events">
-      <div class="day sat"></div>
+      <div class="day saturday"></div>
     </div>
     <div class="float-child events">
-      <div class="day sun"></div>
+      <div class="day sunday"></div>
     </div>
   </div>
 </body>
@@ -261,6 +261,23 @@
       startTime.style.display = "none";
       endTime.style.display = "none";
     }
+  }
+  //Create a div based on the parameters, get info from form.
+  function add(name, day, sTime, eTime, desc, id) {
+    //ID of the div to be appeneded to
+    let var eventDay = "day " + day;
+    //Size of box
+
+    //Position of box {number of pixels from starting point (position = __)}
+
+    //Find column to append to and create new event box
+    let var i = document.getElementById(eventDay)
+    let var d = document.createElement("box");
+    //Fill the box
+    d.id = id;
+    d.innerHTML;
+    //Append
+    i.appendChild(d);
   }
 
   function validateForm() {
