@@ -10,7 +10,7 @@ body {
 .float-child {
     text-align: center;
     font-family: "Times New Roman", Times, serif;
-    width: 12.5%;
+    width: 12.5vw;
     float: left;
     padding: 20px;
     border: 2px solid black;
@@ -38,12 +38,12 @@ body {
 }
 
 .efc {
-    height: 100px;
+    height: 100vh;
 }
 
 .mkfc {
-    width:25%;
-    height: 100px;
+    width:25vw;
+    height: 100vh;
 }
 
 .title {
