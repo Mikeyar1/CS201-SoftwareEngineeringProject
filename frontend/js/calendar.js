@@ -30,3 +30,20 @@ async function makeCalendar(name, description, user) {
     body: JSON.stringify({ name, description, user }),
   });
 }
+
+async function makeEvent(
+  name,
+  description,
+  startTime,
+  endTime,
+  days,
+  calendar
+) {
+  return await fetch(`${baseURL}/calendar/${calendar}/addEvent`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name, description, days, startTime, endTime }),
+  });
+}

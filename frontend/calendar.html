@@ -8,7 +8,7 @@
   />
   <link rel="stylesheet" href="css/stylesheet.css" />
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <script type="text/javascript" src="js/calendar.js"></script>
+  <script src="js/calendar.js"></script>
   <title>Class Track</title>
 </head>
 <body>
@@ -17,7 +17,39 @@
       window.calendarName = sessionStorage.getItem("calendarName");
       (async () => {
         const calendarObj = await getCalendar(window.calendarName);
-        console.log(calendarObj);
+        const events = calendarObj.Events;
+        const days = [
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday",
+          "friday",
+          "saturday",
+          "sunday",
+        ];
+        for (let i = 0; i < events.length; i++) {
+          const event = events[i];
+          const days = event.days.split(" ");
+          for (let j = 0; j < days.length; j++) {
+            const day = days[j];
+            const startTime = event.startTime;
+            const endTime = event.endTime;
+            const startHour = startTime.split(":")[0];
+            const endHour = endTime.split(":")[0];
+            const startMin = startTime.split(":")[1];
+            const endMin = endTime.split(":")[1];
+            const start = parseInt(startHour + startMin);
+            const end = parseInt(endHour + endMin);
+            const duration = end - start;
+            const dayDiv = document.getElementsByClassName(day)[0];
+            const eventDiv = document.createElement("div");
+            eventDiv.className = "event";
+            eventDiv.style.height = duration * 2 + "px";
+            eventDiv.style.top = (start - 800) * 2 + "px";
+            eventDiv.innerHTML = event.eventName;
+            dayDiv.appendChild(eventDiv);
+          }
+        }
       })();
     </script>
   </div>
@@ -29,22 +61,9 @@
         type="button"
         class="btn btn-primary"
         action=""
-        onclick="myFunction()"
+        onclick="openAddEvent()"
       >
         Add Event
-      </button>
-      <input
-        class="form-control mr-sm-2"
-        type="search"
-        placeholder="search"
-        aria-label="Search"
-      />
-      <button
-        id="searchButton"
-        class="btn btn-outline-success my-2 my-sm-0"
-        type="submit"
-      >
-        Search
       </button>
     </form>
   </nav>
@@ -160,7 +179,7 @@
           class="btn btn-primary"
           id="eventInfo"
           name="eventInfo"
-          onclick="makeEvent()"
+          onclick="validateForm()"
         >
           Add
         </button>
@@ -198,19 +217,21 @@
   <!-- Seven boxes for the events-->
   <div class="float-container">
     <div class="float-child events">
-      <div class="time"> 8:00 </div>
-      <div class="time"> 9:00 </div>
-      <div class="time"> 10:00 </div>
-      <div class="time"> 11:00 </div>
-      <div class="time"> 12:00 </div>
-      <div class="time"> 13:00 </div>
-      <div class="time"> 14:00 </div>
-      <div class="time"> 15:00 </div>
-      <div class="time"> 16:00 </div>
-      <div class="time"> 17:00 </div>
-      <div class="time"> 18:00 </div>
-      <div class="time"> 19:00 </div>
-      <div class="time"> 20:00 </div>
+      <div class="time" id="8am">8:00</div>
+      <div class="time" id="9am">9:00</div>
+      <div class="time" id="10am">10:00</div>
+      <div class="time" id="11am">11:00</div>
+      <div class="time" id="12pm">12:00</div>
+      <div class="time" id="1pm">13:00</div>
+      <div class="time" id="2pm">14:00</div>
+      <div class="time" id="3pm">15:00</div>
+      <div class="time" id="4pm">16:00</div>
+      <div class="time" id="5pm">17:00</div>
+      <div class="time" id="6pm">18:00</div>
+      <div class="time" id="7pm">19:00</div>
+      <div class="time" id="8pm">20:00</div>
+      <div class="time" id="9pm">21:00</div>
+      <div class="time" id="10pm">22:00</div>
     </div>
     <div class="float-child events">
       <div class="day monday"></div>
@@ -236,7 +257,7 @@
   </div>
 </body>
 <script>
-  function myFunction() {
+  function openAddEvent() {
     var add_event = document.getElementById("myPopup");
     if (add_event.style.display === "none" || add_event.style.display === "") {
       add_event.style.display = "block";
@@ -248,6 +269,7 @@
   function closePopup() {
     document.getElementById("myPopup").style.display = "none";
   }
+
   function toggleTimeInput(checkboxId, startTimeId, endTimeId) {
     var checkbox = document.getElementById(checkboxId);
     var startTime = document.getElementById(startTimeId);
@@ -264,7 +286,7 @@
     }
   }
 
-  function validateForm() {
+  async function validateForm() {
     // Check if the event name is provided
     var eventName = document.getElementById("eventName").value;
     if (!eventName.trim()) {
@@ -286,12 +308,8 @@
 
     for (var i = 0; i < weekdays.length; i++) {
       var checkbox = document.getElementById(weekdays[i]);
-      var startTime = document.getElementById(
-        weekdays[i].charAt(0).toUpperCase() + "startTime"
-      );
-      var endTime = document.getElementById(
-        weekdays[i].charAt(0).toUpperCase() + "endTime"
-      );
+      var startTime = document.getElementById("sTime");
+      var endTime = document.getElementById("eTime");
 
       if (checkbox.checked) {
         atLeastOneDayChecked = true;
@@ -299,7 +317,7 @@
         // Check if corresponding time inputs are provided
         if (!startTime.value || !endTime.value) {
           alert("Please enter start and end time for " + weekdays[i]);
-          return false;
+          return;
         }
         var start = startTime.value;
         var end = endTime.value;
@@ -308,34 +326,46 @@
             "The start time must be earlier than the end time for " +
               weekdays[i]
           );
-          return false;
+          return;
         }
         if (!isTimeInRange(start) || !isTimeInRange(end)) {
           alert(
             "Start and end times must be between 8:00 AM and 8:00 PM for " +
               weekdays[i]
           );
-          return false;
+          return;
         }
       }
     }
 
     if (!atLeastOneDayChecked) {
       alert("Please select at least one weekday.");
-      return false;
+      return;
     }
-    return true; // Form is valid
+    // make an event on the calendar if the form is valid
+    days = "";
+    for (var i = 0; i < weekdays.length; i++) {
+      var checkbox = document.getElementById(weekdays[i]);
+      if (checkbox.checked) {
+        days += weekdays[i] + " ";
+      }
+    }
+
+    var passST = new Date("1970-01-01T" + startTime.value + ":00");
+    var passET = new Date("1970-01-01T" + endTime.value + ":00");
+    await makeEvent(
+      eventName,
+      description.value,
+      passST,
+      passET,
+      days,
+      window.calendarName
+    );
+    // Refresh the page to show the new event
+    location.reload();
   }
   function isTimeInRange(timeStr) {
     var time = parseInt(timeStr.replace(":", ""), 10);
     return time >= 800 && time <= 2000;
   }
-
-  document
-    .getElementById("eventInfo")
-    .addEventListener("submit", function (event) {
-      if (!validateForm()) {
-        event.preventDefault();
-      }
-    });
 </script>
