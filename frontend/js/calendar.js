@@ -44,6 +44,12 @@ async function makeEvent(
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ name, description, days, startTime, endTime }),
+    body: JSON.stringify({
+      name,
+      description,
+      weekday: days,
+      startTime,
+      endTime,
+    }),
   });
 }

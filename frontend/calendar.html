@@ -6,53 +6,69 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
     crossorigin="anonymous"
   />
-  <link rel="stylesheet" href="css/stylesheet.css" />
+  <link rel="stylesheet" href="css/calendar.css" />
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <script src="js/calendar.js"></script>
   <title>Class Track</title>
 </head>
 <body>
-  <div>
-    <script>
-      window.calendarName = sessionStorage.getItem("calendarName");
-      (async () => {
-        const calendarObj = await getCalendar(window.calendarName);
-        const events = calendarObj.Events;
-        const days = [
-          "monday",
-          "tuesday",
-          "wednesday",
-          "thursday",
-          "friday",
-          "saturday",
-          "sunday",
-        ];
-        for (let i = 0; i < events.length; i++) {
-          const event = events[i];
-          const days = event.days.split(" ");
-          for (let j = 0; j < days.length; j++) {
-            const day = days[j];
-            const startTime = event.startTime;
-            const endTime = event.endTime;
-            const startHour = startTime.split(":")[0];
-            const endHour = endTime.split(":")[0];
-            const startMin = startTime.split(":")[1];
-            const endMin = endTime.split(":")[1];
-            const start = parseInt(startHour + startMin);
-            const end = parseInt(endHour + endMin);
-            const duration = end - start;
-            const dayDiv = document.getElementsByClassName(day)[0];
-            const eventDiv = document.createElement("div");
-            eventDiv.className = "event";
-            eventDiv.style.height = duration * 2 + "px";
-            eventDiv.style.top = (start - 800) * 2 + "px";
-            eventDiv.innerHTML = event.eventName;
-            dayDiv.appendChild(eventDiv);
+  <script>
+    // Helper to convert time to 12 hour format
+    function hours12(date) {
+      return (date.getHours() + 24) % 12 || 12;
+    }
+
+    window.calendarName = sessionStorage.getItem("calendarName");
+    (async () => {
+      const calendarObj = await getCalendar(window.calendarName);
+      console.log(calendarObj);
+      const events = calendarObj.Events;
+      const weekdays = [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+        "sunday",
+      ];
+      // loop through the events and add them to the calendar
+      for (let i = 0; i < events.length; i++) {
+        const event = events[i];
+        const days = event.weekday.split(" ");
+        const startTime = hours12(new Date(event.startTime));
+        const endTime = hours12(new Date(event.endTime));
+        const startMin = String(
+          new Date(event.startTime).getMinutes()
+        ).padStart(2, "0");
+        const endMin = String(new Date(event.endTime).getMinutes()).padStart(
+          2,
+          "0"
+        );
+        const start = startTime + ":" + startMin;
+        const end = endTime + ":" + endMin;
+        weekTable = document.getElementById("weekdaytable");
+        const row = weekTable.insertRow();
+        let newTime = row.insertCell();
+        newTime.appendChild(
+          document.createTextNode(start + " am -" + end + " pm ")
+        );
+        for (let j = 0; j < weekdays.length; j++) {
+          if (days.includes(weekdays[j])) {
+            let newCell = row.insertCell();
+            // append the cell to the row
+            newCell.appendChild(document.createTextNode(event.name));
+          } else {
+            let newCell = row.insertCell();
+            // append the cell to the row
+            row.appendChild(document.createTextNode(""));
           }
         }
-      })();
-    </script>
-  </div>
+        let newDesc = row.insertCell();
+        newDesc.appendChild(document.createTextNode(event.description));
+      }
+    })();
+  </script>
   <nav class="navbar">
     <a class="navbar-brand">Class Track</a>
     <form class="form-inline">
@@ -61,14 +77,32 @@
         type="button"
         class="btn btn-primary"
         action=""
-        onclick="openAddEvent()"
+        onclick="openPopup('addPopup')"
       >
         Add Event
+      </button>
+      <button
+        id="removeEvent"
+        type="button"
+        class="btn btn-primary"
+        action=""
+        onclick="openPopup('deletePopup')"
+      >
+        Delete Event
+      </button>
+      <button
+        id="editEvent"
+        type="button"
+        class="btn btn-primary"
+        action=""
+        onclick="openPopup('editPopup')"
+      >
+        Edit Event
       </button>
     </form>
   </nav>
   <!--pop up for inputs -->
-  <div id="myPopup" class="popup">
+  <div id="addPopup" class="popup">
     <div class="popuptext" id="popupContent">
       <h3>Add Event</h3>
       <button
@@ -76,11 +110,11 @@
         type="button"
         class="btn btn-primary"
         action=""
-        onclick="closePopup()"
+        onclick="closePopup('addPopup')"
       >
         X
       </button>
-      <form name="eventInfo" onSubmit="return validateForm()">
+      <form name="eventInfo" onSubmit="return validateAddForm()">
         <label for="eventName">Event Name:</label>
         <input
           type="text"
@@ -179,7 +213,7 @@
           class="btn btn-primary"
           id="eventInfo"
           name="eventInfo"
-          onclick="validateForm()"
+          onclick="validateAddForm()"
         >
           Add
         </button>
@@ -187,78 +221,46 @@
     </div>
   </div>
 
-  <!--List the dates and days -->
-  <div class="float-container">
-    <div class="float-child">
-      <div class="green">Time</div>
-    </div>
-    <div class="float-child">
-      <div class="green">Monday</div>
-    </div>
-    <div class="float-child">
-      <div class="green">Tuesday</div>
-    </div>
-    <div class="float-child">
-      <div class="green">Wednesday</div>
-    </div>
-    <div class="float-child">
-      <div class="green">Thursday</div>
-    </div>
-    <div class="float-child">
-      <div class="green">Friday</div>
-    </div>
-    <div class="float-child">
-      <div class="green">Saturday</div>
-    </div>
-    <div class="float-child">
-      <div class="green">Sunday</div>
-    </div>
-  </div>
-  <!-- Seven boxes for the events-->
-  <div class="float-container">
-    <div class="float-child events">
-      <div class="time" id="8am">8:00</div>
-      <div class="time" id="9am">9:00</div>
-      <div class="time" id="10am">10:00</div>
-      <div class="time" id="11am">11:00</div>
-      <div class="time" id="12pm">12:00</div>
-      <div class="time" id="1pm">13:00</div>
-      <div class="time" id="2pm">14:00</div>
-      <div class="time" id="3pm">15:00</div>
-      <div class="time" id="4pm">16:00</div>
-      <div class="time" id="5pm">17:00</div>
-      <div class="time" id="6pm">18:00</div>
-      <div class="time" id="7pm">19:00</div>
-      <div class="time" id="8pm">20:00</div>
-      <div class="time" id="9pm">21:00</div>
-      <div class="time" id="10pm">22:00</div>
-    </div>
-    <div class="float-child events">
-      <div class="day monday"></div>
-    </div>
-    <div class="float-child events">
-      <div class="day tuesday"></div>
-    </div>
-    <div class="float-child events">
-      <div class="day wednesday"></div>
-    </div>
-    <div class="float-child events">
-      <div class="day thursday"></div>
-    </div>
-    <div class="float-child events">
-      <div class="day friday"></div>
-    </div>
-    <div class="float-child events">
-      <div class="day saturday"></div>
-    </div>
-    <div class="float-child events">
-      <div class="day sunday"></div>
-    </div>
-  </div>
+  <!-- not functional yet-->
+  <!-- <div id="deletePopup" class="popup">
+    <button
+      id="Close"
+      type="button"
+      class="btn btn-primary"
+      action=""
+      onclick="closePopup('deletePopup')"
+    >
+      X
+    </button>
+    <select id="eventList"></select>
+    <button
+      type="button"
+      class="btn btn-primary"
+      id="deleteEvent"
+      name="deleteEvent"
+      onclick="editEvent(eventList.value)"
+    >
+      Delete Event
+    </button>
+  </div> -->
+  <!-- create a HTML table with 7 columns and 12 rows for each time -->
+  <table id="weekdaytable" style="width: auto">
+    <tr>
+      <th>Time</th>
+      <th>Monday</th>
+      <th>Tuesday</th>
+      <th>Wednesday</th>
+      <th>Thursday</th>
+      <th>Friday</th>
+      <th>Saturday</th>
+      <th>Sunday</th>
+      <th>Description</th>
+    </tr>
+  </table>
 </body>
 <script>
-  function openAddEvent() {
-    var add_event = document.getElementById("myPopup");
+  function openPopup(popupName) {
+    var add_event = document.getElementById(popupName);
     if (add_event.style.display === "none" || add_event.style.display === "") {
       add_event.style.display = "block";
     } else {
@@ -266,8 +268,8 @@
     }
   }
 
-  function closePopup() {
-    document.getElementById("myPopup").style.display = "none";
+  function closePopup(popupName) {
+    document.getElementById(popupName).style.display = "none";
   }
 
   function toggleTimeInput(checkboxId, startTimeId, endTimeId) {
@@ -286,7 +288,7 @@
     }
   }
 
-  async function validateForm() {
+  async function validateAddForm() {
     // Check if the event name is provided
     var eventName = document.getElementById("eventName").value;
     if (!eventName.trim()) {
@@ -364,6 +366,43 @@
     // Refresh the page to show the new event
     location.reload();
   }
+
+  async function getAllEvents() {
+    const calendarObj = await getCalendar(window.calendarName);
+    const events = calendarObj.Events;
+    for (let i = 0; i < events.length; i++) {
+      // append a new option in the dropdown showing a list of event names
+      var option = document.createElement("option");
+      option.text = events[i].name;
+      option.value = events[i].name;
+      option.id = `event${i}`;
+      document.getElementById("eventList").appendChild(option);
+    }
+  }
+  getAllEvents();
+  // Not functional yet
+  //   async function deleteEvent(eventName) {
+  //     return await fetch(`${baseURL}/events/${eventName}`, {
+  //       method: "DELETE",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ name: eventName }),
+  //     });
+  //     location.reload();
+  //   }
+
+  //   async function editEvent(eventName) {
+  //     return await fetch(`${baseURL}/events/${eventName}`, {
+  //       method: "PATCH",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ name: eventName }),
+  //     });
+  //     location.reload();
+  //   }
+
   function isTimeInRange(timeStr) {
     var time = parseInt(timeStr.replace(":", ""), 10);
     return time >= 800 && time <= 2000;
