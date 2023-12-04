@@ -16,9 +16,34 @@ body {
     border: 2px solid black;
 }
 
+.classNav h1 {
+     text-align: center;
+    font-family: "Roboto Mono", monospace;
+    font-weight: bold;
+}
+
+.classNav h2 {
+    text-align: center;
+    font-family: "Roboto Mono", monospace;
+    font-weight: bold;
+}
+
 #eventInfo {
     background-color: black;
     color: white;
+}
+
+.existingForm {
+    margin-bottom: 25px;
+}
+
+.efc {
+    height: 100px;
+}
+
+.mkfc {
+    width:25%;
+    height: 100px;
 }
 
 .title {
@@ -49,6 +74,7 @@ nav {
 
 .time {
     height: 54px;
+    overflow: hidden;
 }
 
 .events {

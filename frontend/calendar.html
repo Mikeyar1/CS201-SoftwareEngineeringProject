@@ -154,9 +154,10 @@
         <label for="description">Description:</label>
         <textarea id="description" name="description"></textarea><br /><br />
 
-        <!-- Onclick submit the form to the php file -->
+        <!-- Onclick submit the form to the js functions -->
         <button
-          type="submit"
+          type="button"
+          class="btn btn-primary"
           id="eventInfo"
           name="eventInfo"
           onclick="makeEvent()"
@@ -197,40 +198,40 @@
   <!-- Seven boxes for the events-->
   <div class="float-container">
     <div class="float-child events">
-      <div class="time">------- 8:00 -------</div>
-      <div class="time">------- 9:00 -------</div>
-      <div class="time">------ 10:00 -------</div>
-      <div class="time">------ 11:00 -------</div>
-      <div class="time">------ 12:00 -------</div>
-      <div class="time">------ 13:00 -------</div>
-      <div class="time">------ 14:00 -------</div>
-      <div class="time">------ 15:00 -------</div>
-      <div class="time">------ 16:00 -------</div>
-      <div class="time">------ 17:00 -------</div>
-      <div class="time">------ 18:00 -------</div>
-      <div class="time">------ 19:00 -------</div>
-      <div class="time">------ 20:00 -------</div>
+      <div class="time"> 8:00 </div>
+      <div class="time"> 9:00 </div>
+      <div class="time"> 10:00 </div>
+      <div class="time"> 11:00 </div>
+      <div class="time"> 12:00 </div>
+      <div class="time"> 13:00 </div>
+      <div class="time"> 14:00 </div>
+      <div class="time"> 15:00 </div>
+      <div class="time"> 16:00 </div>
+      <div class="time"> 17:00 </div>
+      <div class="time"> 18:00 </div>
+      <div class="time"> 19:00 </div>
+      <div class="time"> 20:00 </div>
     </div>
     <div class="float-child events">
-      <div class="day mon"></div>
+      <div class="day monday"></div>
     </div>
     <div class="float-child events">
-      <div class="day tue"></div>
+      <div class="day tuesday"></div>
     </div>
     <div class="float-child events">
-      <div class="day wen"></div>
+      <div class="day wednesday"></div>
     </div>
     <div class="float-child events">
-      <div class="day thur"></div>
+      <div class="day thursday"></div>
     </div>
     <div class="float-child events">
-      <div class="day fri"></div>
+      <div class="day friday"></div>
     </div>
     <div class="float-child events">
-      <div class="day sat"></div>
+      <div class="day saturday"></div>
     </div>
     <div class="float-child events">
-      <div class="day sun"></div>
+      <div class="day sunday"></div>
     </div>
   </div>
 </body>
@@ -323,7 +324,6 @@
       alert("Please select at least one weekday.");
       return false;
     }
-
     return true; // Form is valid
   }
   function isTimeInRange(timeStr) {

@@ -215,15 +215,16 @@
                 return false;
             }
         }
+    
     }
 
     if (!atLeastOneDayChecked) {
         alert("Please select at least one weekday.");
         return false;
-    }
-        
+    }  
     return true; // Form is valid
 }
+    
 function isTimeInRange(timeStr) {
     var time = parseInt(timeStr.replace(':', ''), 10);
     return time >= 800 && time <= 2000; 
@@ -233,6 +234,10 @@ document.getElementById("eventInfo").addEventListener("submit", function(event){
     if(!validateForm()){
         event.preventDefault();
     } 
+}
+
+function add(name, day, start, end, desc) {
+    
 });
 
     
