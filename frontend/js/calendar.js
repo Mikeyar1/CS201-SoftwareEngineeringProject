@@ -53,3 +53,39 @@ async function makeEvent(
     }),
   });
 }
+
+//   async function getAllEvents() {
+//     const calendarObj = await getCalendar(window.calendarName);
+//     const events = calendarObj.Events;
+//     for (let i = 0; i < events.length; i++) {
+//       // append a new option in the dropdown showing a list of event names
+//       var option = document.createElement("option");
+//       option.text = events[i].name;
+//       option.value = events[i].name;
+//       option.id = `event${i}`;
+//       document.getElementById("eventList").appendChild(option);
+//     }
+//   }
+//   getAllEvents();
+// Not functional yet
+//   async function deleteEvent(eventName) {
+//     return await fetch(`${baseURL}/events/${eventName}`, {
+//       method: "DELETE",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({ name: eventName }),
+//     });
+//     location.reload();
+//   }
+
+//   async function editEvent(eventName) {
+//     return await fetch(`${baseURL}/events/${eventName}`, {
+//       method: "PATCH",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({ name: eventName }),
+//     });
+//     location.reload();
+//   }
